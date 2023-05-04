@@ -25,4 +25,7 @@ IanJ, KevinX -- 2023-5-3 11:40 PM
     - added links for each API we will use
     - added more details for database organization
     - added an abstract detailing our goal for this project
-    
+
+AdenG -- 2023-5-4 12:55 PM
+--------------------------------------------------------------
+- created html files for each site page (home, login, register)

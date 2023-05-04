@@ -1,0 +1,28 @@
+Gaslighting Gatekeeping Girlbosses Part X
+Ian Jiang
+Aden Garbutt
+Gitae Park
+Kevin Xiao
+pd7
+---------------------
+P04 -- Stock Simulator
+
+ ______   ______   __   __   __       ______   _______
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+IanJ, KevinX -- 2023-5-3 11:40 PM
+--------------------------------------------------------------
+  - Updated design doc:
+    - created descriptions of each html file
+    - added links for each API we will use
+    - added more details for database organization
+    - added an abstract detailing our goal for this project
+    

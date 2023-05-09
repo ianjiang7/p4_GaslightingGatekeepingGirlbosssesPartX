@@ -10,6 +10,7 @@ def login():
     #     return redirect("/home")
     # return render_template('login.html')
     return render_template('home.html')
+
     
 @app.route('/login')
 def authenticate():

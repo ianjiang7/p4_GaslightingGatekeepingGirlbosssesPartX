@@ -4,51 +4,62 @@ from flask import Flask, render_template, session, redirect, request
 
 app = Flask(__name__)
 
-@app.route('/')
-def login():
-    # if 'username' in session:
-    #     return redirect("/home")
-    # return render_template('login.html')
-    return render_template('home.html')
+@app.route("/")
+def index():
+    # if there is a session in place, divert the user to the main page
+    if 'username' in session:
+        return redirect("/home")
+    else:
+        return render_template('login.html', login="Not logged in!")
 
-    
-@app.route('/login')
+@app.route('/home', methods=['GET', 'POST'])
 def authenticate():
-    if 'username' in session:
-        return render_template('home.html')
-    if request.method == 'POST':
-        user = request.form['username']
-        pw = request.form['password']
-    if request.method == 'GET':
-        user = request.args['username']
-        pw = request.args['password']
-    if login(user,pw):
-        if request.method == 'POST':
-            session['username'] = request.form['username']
-        if request.method == 'GET':
-            session['username'] = request.args['username']
-        return redirect('/home')
-    else:
-        return render_template('login.html')
 
-@app.route('/signup')
+    ##### ACCOUNT INFO CHECK
+    if request.method == 'POST':
+        username = [request.form['username']]
+        password = request.form['password']
+
+        c.execute("SELECT password FROM login WHERE user = (?)", username)
+
+        try:
+            x = c.fetchall()[0][0]
+            if x != password:
+                return render_template('login.html', login="Invalid Password!")
+            session['username'] = username
+        except:
+            return render_template('login.html', login="Submitted username is not registered!")
+    if 'username' not in session:
+        return redirect("/")
+        
+@app.route("/register")
+def register():
+    return render_template('createaccount.html')
+
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    if 'username' in session:
-        return render_template('home.html')
-    if request.method == 'POST':
-        user = request.form['username']
-        pw = request.form['password']
-    if request.method == 'GET':
-        user = request.args['username']
-        pw = request.args['password']
-    if signup(user,pw):
-        if request.method == 'POST':
-            session['username'] = request.form['username']
-        if request.method == 'GET':
-            session['username'] = request.args['username']
-        return redirect('/home')
-    else:
-        return render_template('signup.html')
+    newUser = request.form['username']
+    newPass = request.form['password']
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    c.execute("SELECT * FROM login;")
+    user_logins = c.fetchall()
+
+    for user in user_logins:
+        if len(newUser) < 8 or len(newPass) < 8 :
+            return render_template('createaccount.html', status="Username and Password must be at least 8 characters long!")
+        if newUser == user[0]:
+            return render_template('createaccount.html', status="Submitted username is already in use.")
+
+    c.execute("INSERT INTO login VALUES (?,?);", (newUser, newPass))
+    db.commit()
+    return render_template('login.html', login="New user has been created successfully! Log in with your new credentials!")
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run()

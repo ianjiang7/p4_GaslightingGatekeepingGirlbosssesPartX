@@ -29,3 +29,15 @@ IanJ, KevinX -- 2023-5-3 11:40 PM
 AdenG -- 2023-5-4 12:55 PM
 --------------------------------------------------------------
 - created html files for each site page (home, login, register)
+
+IanJ -- 2023-5-9-9:30 PM
+--------------------------------------------------------------
+- created database methods used for login and signup
+- got login and signup to work
+- added logout button and logout functionality
+- added launch codes
+- added requirements.txt
+- DATA CONDUIT:
+  - APIs will output a yes or no
+  - in the js, a yes will make the canvas green and a no will make the canvas red. This will indicate whether the simulation
+  thinks you should or shouldn't buy the stock

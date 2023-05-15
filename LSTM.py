@@ -86,10 +86,12 @@ def get_prediction(ticker):
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("yes")
+      return [data.iloc[0,0], predictions[0,0], 'yes']
   else:
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("no!")
+      return [data.iloc[0,0], predictions[0,0], 'no']
 
 get_prediction("NVDA")
 

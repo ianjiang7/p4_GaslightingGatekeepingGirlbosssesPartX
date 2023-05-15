@@ -12,15 +12,16 @@ plt.style.use('fivethirtyeight')
 
 
 import yfinance as yf
-df = yf.download(tickers="TSLA", period="20d", interval="15m", auto_adjust=True)
+df = yf.download(tickers="NVDA", period="20d", interval="15m", auto_adjust=True)
 
-
+'''
 plt.figure(figsize=(16,8))
 plt.title('Close Price History')
 plt.plot(df['Close'])
 plt.xlabel('Date', fontsize=18)
 plt.ylabel('Closing Price USD($)', fontsize=18)
 plt.show()
+'''
 
 
 # Create a new dataframe with only the 'Close' column
@@ -84,5 +85,8 @@ predictions = scaler.inverse_transform(predictions)
 if predictions[0,0] > data.iloc[0,0] :
     print (predictions[0,0])
     print (data.iloc[0,0])
+    print ("yes")
 else:
+    print (predictions[0,0])
+    print (data.iloc[0,0])
     print ("no!")

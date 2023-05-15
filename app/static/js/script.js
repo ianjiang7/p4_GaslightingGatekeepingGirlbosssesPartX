@@ -16,3 +16,10 @@ var darkMode = function() {
 
 lightModeButton.addEventListener('click', lightMode);
 darkModeButton.addEventListener('click', darkMode);
+
+/* hide login button once logged in and show user profile dropdown thingy */
+var loginButton = document.getElementById("login");
+loginButton.style.display = "none"
+
+var loggedInButton = document.getElementById("loggedInButton");
+loggedInButton.style.display = ""

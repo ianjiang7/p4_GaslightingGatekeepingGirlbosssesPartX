@@ -21,11 +21,11 @@
 
           <button type="button" class="btn btn-light mx-1" id="lightMode" style="border-color: black">Light</button>
           <button type="button" class="btn btn-dark mx-1" id="darkMode">Dark</button>
-          <form action="/logout" method="post" id="logout">
-            <button type="submit" class="btn btn-outline-primary mx-1" id="logout">Logout</button>
-          </form>
 
-          <div class="dropdown">
+          <a class="btn btn-outline-primary mx-1" style="" id="login" href="/register">Login</a>
+
+            <!--- show once logged in --->
+          <div class="dropdown" id="loggedIn" style="display: none">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{Username}}
             </button>
@@ -33,6 +33,7 @@
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><a class="dropdown-item" href="#">Past Predictions</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </div>
 
@@ -41,9 +42,26 @@
     </nav>
 
     <div class="container-fluid">
-      <canvas class="mx-auto"></canvas>
 
-      <p class="mx-auto">click below to recieve a prediction</p>
+      <div class="mx-auto" style="width: 200px;">
+        <canvas></canvas>
+      </div>
+
+      <div class="mx-auto" style="width: 500px;">
+        Give me a prediction for:
+        <div class="dropdown" style="display: inline">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"  aria-expanded="false">
+            Pick Stock
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">NVDA</a></li>
+            <li><a class="dropdown-item" href="#">AAPL</a></li>
+            <li><a class="dropdown-item" href="#">MSFT</a></li>
+            <li><a class="dropdown-item" href="#">TSLA</a></li>
+          </ul>
+        </div>
+      </div>
+
       <button type="button" name="button" class="mx-auto">GIVE ME A PREDICTION</button>
     </div>
 

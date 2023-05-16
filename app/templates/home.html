@@ -50,18 +50,18 @@
         <canvas></canvas>
       </div>
 
-      <form>
+      <form action="/predict" method="post">
         Give me a prediction for:
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id="ticker" name="ticker">
           <option selected>Pick a stock</option>
-          <option value="1">NVDA</option>
-          <option value="2">AAPL</option>
-          <option value="3">MSFT</option>
-          <option value="4">TSLA</option>
+          <option value="NVDA">NVDA</option>
+          <option value="AAPL">AAPL</option>
+          <option value="MSFT">MSFT</option>
+          <option value="TSLA">TSLA</option>
         </select>
       </form>
 
-      <button type="button" name="button" class="mx-auto">GIVE ME A PREDICTION</button>
+      <button type="submit" name="button" class="mx-auto">GIVE ME A PREDICTION</button>
     </div>
 
     <script src="..\static\js\script.js"></script>

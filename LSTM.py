@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.callbacks import EarlyStopping
 plt.style.use('fivethirtyeight')
 
-
-
 import yfinance as yf
 
 def get_prediction(ticker):
@@ -94,5 +92,3 @@ def get_prediction(ticker):
       return [data.iloc[0,0], predictions[0,0], 'no']
 
 get_prediction("NVDA")
-
-

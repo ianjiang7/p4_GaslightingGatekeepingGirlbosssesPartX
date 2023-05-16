@@ -36,17 +36,18 @@ var showPrediction = function(buy) {
 var loading = document.getElementById('loading');
 var loadingPrediction = function() {
     var prediction = document.getElementById('prediction');
-
     window.cancelAnimationFrame(requestID);
     loading.style.display = 'block';
     button = document.getElementById('predict');
     button.disabled = true;
 
     if(prediction.value != '') {
+
         window.cancelAnimationFrame(requestID);
         loading.style.display = 'none';
         button.disabled = false;
         showPrediction(prediction.value);
+        
     }
     requestID = window.requestAnimationFrame(loadingPrediction);
 
@@ -57,6 +58,7 @@ var predict = function() {
     prediction.value = '';
 
     loadingPrediction();
+    showPrediction(prediction.value);
 }
 button.addEventListener('click', predict);
 /* hide login button once logged in and show user profile dropdown thingy

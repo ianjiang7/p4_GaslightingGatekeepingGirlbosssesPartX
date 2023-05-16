@@ -119,7 +119,7 @@ def logout():
     session.pop('username', None)
     return redirect('/')
 
-@app.route("/predict")
+@app.route("/predict", methods=['GET','POST'])
 def predict():
     TICKER = request.form['ticker']
     predictions = get_prediction(TICKER)

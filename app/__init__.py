@@ -5,6 +5,7 @@ import sqlite3
 import random
 import os
 from LSTM import get_prediction
+
 DB_FILE = "tables.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
@@ -61,7 +62,7 @@ def login(username, password):
 def index():
     # if there is a session in place, divert the user to the main page
     if 'username' in session:
-        return render_template("home.html")
+        return render_template("home.html", prediction="")
     else:
         return render_template('register.html')
 
@@ -121,6 +122,8 @@ def logout():
 @app.route("/predict")
 def predict():
     TICKER = request.form['ticker']
+    predictions = get_prediction(TICKER)
+    return render_template("home.html", prediction=predictions[2])
 
 
 if __name__ == "__main__":

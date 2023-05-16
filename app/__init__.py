@@ -4,7 +4,7 @@ from flask import Flask, render_template, session, redirect, request, url_for
 import sqlite3
 import random
 import os
-
+from LSTM import get_prediction
 DB_FILE = "tables.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
@@ -117,6 +117,11 @@ def signup():
 def logout():
     session.pop('username', None)
     return redirect('/')
+
+@app.route("/predict")
+def predict():
+    TICKER = request.form['ticker']
+
 
 if __name__ == "__main__":
     app.debug = True

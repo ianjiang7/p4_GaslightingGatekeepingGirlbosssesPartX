@@ -9,6 +9,7 @@
   </head>
   <body data-bs-theme="light">
 
+    <!--NAV BAR-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Magic 8 Ball</a>
@@ -22,9 +23,10 @@
           <button type="button" class="btn btn-light mx-1" id="lightMode" style="border-color: black">Light</button>
           <button type="button" class="btn btn-dark mx-1" id="darkMode">Dark</button>
 
-          <a class="btn btn-outline-primary mx-1" style="" id="login" href="/register">Login</a>
+          <!--login button--->
+          <a class="btn btn-outline-primary mx-1" id="loginButton" href="/register">Login</a>
 
-            <!--- show once logged in --->
+          <!--- show once logged in --->
           <div class="dropdown" id="loggedIn" style="display: none">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{Username}}
@@ -41,28 +43,25 @@
       </div>
     </nav>
 
+
     <div class="container-fluid">
 
       <div class="mx-auto" style="width: 200px;">
         <canvas></canvas>
       </div>
 
-      <div class="mx-auto" style="width: 500px;">
+      <form action="/predict" method="post">
         Give me a prediction for:
-        <div class="dropdown" style="display: inline">
-          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"  aria-expanded="false">
-            Pick Stock
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">NVDA</a></li>
-            <li><a class="dropdown-item" href="#">AAPL</a></li>
-            <li><a class="dropdown-item" href="#">MSFT</a></li>
-            <li><a class="dropdown-item" href="#">TSLA</a></li>
-          </ul>
-        </div>
-      </div>
+        <select class="form-select" aria-label="Default select example" id="ticker" name="ticker">
+          <option selected>Pick a stock</option>
+          <option value="NVDA">NVDA</option>
+          <option value="AAPL">AAPL</option>
+          <option value="MSFT">MSFT</option>
+          <option value="TSLA">TSLA</option>
+        </select>
+      </form>
 
-      <button type="button" name="button" class="mx-auto">GIVE ME A PREDICTION</button>
+      <button type="submit" name="button" class="mx-auto">GIVE ME A PREDICTION</button>
     </div>
 
     <script src="..\static\js\script.js"></script>

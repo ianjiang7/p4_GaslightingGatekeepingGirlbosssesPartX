@@ -17,9 +17,14 @@ var darkMode = function() {
 lightModeButton.addEventListener('click', lightMode);
 darkModeButton.addEventListener('click', darkMode);
 
-/* hide login button once logged in and show user profile dropdown thingy */
-var loginButton = document.getElementById("login");
-loginButton.style.display = "none"
+var c = document.getElementById('canvas');
+var ctx = c.getContext('2d');
 
-var loggedInButton = document.getElementById("loggedInButton");
-loggedInButton.style.display = ""
+var predict = function(buy) {
+    if (buy == 'yes') {
+        ctx.fillStyle = 'green';
+    } else {
+        ctx.fillStyle = 'red';
+    }
+    ctx.fillRect(0, 0, c.width, c.height);
+}

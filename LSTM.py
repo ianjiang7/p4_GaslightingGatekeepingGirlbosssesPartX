@@ -6,7 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
-from tensorflow.keras.callbacks import EarlyStopping
+from keras.callbacks import EarlyStopping
 plt.style.use('fivethirtyeight')
 
 import yfinance as yf

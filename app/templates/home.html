@@ -49,21 +49,27 @@
       <div class="mx-auto" style="width: 200px;">
         <canvas id="canvas"></canvas>
       </div>
+
       <input type="hidden" id="prediction" name="prediction" value="{{prediction}}">
+
       <form action="/predict" method="post">
-        Give me a prediction for:
-        <select class="form-select" aria-label="Default select example" id="ticker" name="ticker">
-          <option selected>Pick a stock</option>
-          <option value="NVDA">NVDA</option>
-          <option value="AAPL">AAPL</option>
-          <option value="MSFT">MSFT</option>
-          <option value="TSLA">TSLA</option>
-        </select>
-        <button type="submit" name="button" class="mx-auto" id="predict">GIVE ME A PREDICTION</button>
+        <div class="mx-auto" style="width: 500px;">
+          Give me a prediction for:
+
+          <select class="form-select" aria-label="Default select example" id="ticker" name="ticker" style="width: 150px; display: inline">
+            <option selected>Pick a stock</option>
+            <option value="NVDA">NVDA</option>
+            <option value="AAPL">AAPL</option>
+            <option value="MSFT">MSFT</option>
+            <option value="TSLA">TSLA</option>
+          </select>
+        </div>
+
+          <button type="submit" class="btn btn-primary mx-auto" style="display: block" name="button" id="predict" >GIVE ME A PREDICTION</button>
       </form>
-      
 
     </div>
+
     <div class="d-flex justify-content-center">
       <div class="spinner-border" role="status" id="loading" style="display:none">
         <span class="sr-only">Loading...</span>

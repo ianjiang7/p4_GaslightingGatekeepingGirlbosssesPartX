@@ -14,9 +14,9 @@ command = "create table IF NOT EXISTS login(user TEXT, password TEXT, stock_id I
 c.execute(command)
 db.commit()
 
-command = "create table IF NOT EXISTS predictions(id INTEGER PRIMARY KEY, name TEXT);"
-c.execute(command)
-db.commit()
+#command = "create table IF NOT EXISTS predictions(id INTEGER PRIMARY KEY, name TEXT);"
+#c.execute(command)
+#db.commit()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -62,7 +62,7 @@ def login(username, password):
 def index():
     # if there is a session in place, divert the user to the main page
     if 'username' in session:
-        return render_template("home.html", prediction="")
+        return render_template("home.html", prediction="", Username=session['username'])
     else:
         return render_template('register.html')
 
@@ -89,11 +89,7 @@ def authenticate():
             session['username'] = request.args['username']
         return redirect('/')
     else:
-        return render_template('login.html', status="Invalid username or password!")
-        
-@app.route("/register")
-def register():
-    return render_template('createaccount.html')
+        return render_template('register.html', Lstatus="Invalid username or password!")
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -105,13 +101,13 @@ def signup():
 
     for user in user_logins:
         if len(newUser) < 8 or len(newPass) < 8 :
-            return render_template('register.html', status="Username and Password must be at least 8 characters long!")
+            return render_template('register.html', Sstatus="Username and Password must be at least 8 characters long!")
         if newUser == user[0]:
-            return render_template('register.html', status="Submitted username is already in use.")
+            return render_template('register.html', Sstatus="Submitted username is already in use.")
 
     c.execute("INSERT INTO login VALUES (?,?,?);", (newUser, newPass,-1))
     db.commit()
-    return render_template('register.html', status="New user has been created successfully! Log in with your new credentials!")
+    return render_template('register.html', Sstatus="New user has been created successfully! Log in with your new credentials!")
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -119,7 +115,7 @@ def logout():
     session.pop('username', None)
     return redirect('/')
 
-@app.route("/predict", methods=['GET','POST'])
+@app.route("/predict", methods=['POST'])
 def predict():
     TICKER = request.form['ticker']
     predictions = get_prediction(TICKER)

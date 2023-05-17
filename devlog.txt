@@ -42,3 +42,12 @@ IanJ -- 2023-5-9-9:30 PM
   - APIs will output a yes or no
   - in the js, a yes will make the canvas green and a no will make the canvas red. This will indicate whether the simulation
   thinks you should or shouldn't buy the stock
+
+IanJ -- 2023-5-17-1:20 AM
+--------------------------------------------------------------
+- created and fixed javascript functions to show whether you should buy a stock or not
+- dropdown menu now shows username and will show if logged in
+- login button is in place of dropdown if not logged in
+- fixed bugs
+- created /predict route that loads the prediction and updates page.
+  - updated page will have information to be used by the javascript

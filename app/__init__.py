@@ -14,9 +14,9 @@ command = "create table IF NOT EXISTS login(user TEXT, password TEXT, stock_id I
 c.execute(command)
 db.commit()
 
-command = "create table IF NOT EXISTS predictions(id INTEGER PRIMARY KEY, name TEXT);"
-c.execute(command)
-db.commit()
+#command = "create table IF NOT EXISTS predictions(id INTEGER PRIMARY KEY, name TEXT);"
+#c.execute(command)
+#db.commit()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)

@@ -34,38 +34,36 @@ var showPrediction = function(buy) {
 }
 
 var loading = document.getElementById('loading');
+var prediction = document.getElementById('prediction');
+var button = document.getElementById('predict');
+
 var loadingPrediction = function() {
-    var prediction = document.getElementById('prediction');
-    window.cancelAnimationFrame(requestID);
+    console.log('loading');
     loading.style.display = 'block';
-    button = document.getElementById('predict');
     button.disabled = true;
+}
 
-    if(prediction.value != '') {
-
-        window.cancelAnimationFrame(requestID);
-        loading.style.display = 'none';
-        button.disabled = false;
-        showPrediction(prediction.value);
-        
-    }
-    requestID = window.requestAnimationFrame(loadingPrediction);
-
+var loadedPrediction = function() {
+    loading.style.display = 'none';
+    button.disabled = false;
 }
 
 var predict = function() {
-    var prediction = document.getElementById('prediction');
-    prediction.value = '';
-
-    loadingPrediction();
+    //loadedPrediction();
     showPrediction(prediction.value);
+    //loadingPrediction;
+    // showPrediction(prediction.value);
 }
-button.addEventListener('click', predict);
-/* hide login button once logged in and show user profile dropdown thingy
+//button.addEventListener('click', loadingPrediction());
+prediction.addEventListener('change', predict());
+// hide login button once logged in and show user profile dropdown thingy
 
 var loginButton = document.getElementById("loginButton");
-loginButton.style.display = "none"
+var loggedIn = document.getElementById("loggedIn");
+var hideLogin = function() {
+    loginButton.style.display = "none"
+    loggedIn.style.display = ""
+}
 
-var loggedInButton = document.getElementById("loggedInButton");
-loggedInButton.style.display = ""
-*/
+
+loginButton.addEventListener('change', hideLogin());

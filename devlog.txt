@@ -42,6 +42,19 @@ IanJ -- 2023-5-9-9:30 PM
   - APIs will output a yes or no
   - in the js, a yes will make the canvas green and a no will make the canvas red. This will indicate whether the simulation
   thinks you should or shouldn't buy the stock
+  
+KevinX -- 2023-5-10:12:00 AM
+--------------------------------------------------------------
+- Imported Yahoo Finance
+- Imported LSTM model
+- created training, validation, and testing data sets
+
+KevinX -- 2023-5-14:12:00 AM
+--------------------------------------------------------------
+- Trained model on past historical stock prices
+- Added EarlyStopping to model to prevent validation and training losses
+- Compared historical stock price to predicted stock price; created function that outputed a yes or no
+- Started looking for list of valid stock tickers to test on: NVDA, AAPL, TSLA, MSFT.
 
 IanJ -- 2023-5-17-1:20 AM
 --------------------------------------------------------------

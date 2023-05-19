@@ -49,11 +49,9 @@ var loadedPrediction = function() {
 }
 
 var predict = function() {
-    //loadedPrediction();
     showPrediction(prediction.value);
-    //loadingPrediction;
-    // showPrediction(prediction.value);
 }
+
 //button.addEventListener('click', loadingPrediction());
 prediction.addEventListener('change', predict());
 // hide login button once logged in and show user profile dropdown thingy
@@ -65,5 +63,13 @@ var hideLogin = function() {
     loggedIn.style.display = ""
 }
 
-
 loginButton.addEventListener('change', hideLogin());
+
+var resizeCanvas = function() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas()}
+    );

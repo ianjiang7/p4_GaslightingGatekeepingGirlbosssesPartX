@@ -48,17 +48,17 @@
 
     <div class="container-fluid">
 
-      <div class="mx-auto" style="width: 200px;">
-        <canvas id="canvas"></canvas>
+      <div class="mx-auto" style="z-index:1">
+        <canvas id="canvas" style="width:100%;height:100%;display:block;margin:0px;position:absolute;"></canvas>
       </div>
 
       <input type="hidden" id="prediction" name="prediction" value="{{prediction}}">
 
-      <form action="/predict" method="post">
-        <div class="mx-auto" style="width: 500px;">
+      <form action="/predict" method="post" >
+        <div class="mx-auto" style="width: 500px;z-index:2;position:sticky;">
           Give me a prediction for:
 
-          <select class="form-select" aria-label="Default select example" id="ticker" name="ticker" style="width: 150px; display: inline">
+          <select class="form-select" aria-label="Default select example" id="ticker" name="ticker" style="width: 150px; display: inline; position:sticky;z-index:2;">
             <option selected>Pick a stock</option>
             <option value="NVDA">NVDA</option>
             <option value="AAPL">AAPL</option>
@@ -67,7 +67,7 @@
           </select>
         </div>
 
-        <div class="mx-auto my-2" style="width: 200px;">
+        <div class="mx-auto my-2" style="width: 200px;position:sticky;z-index: 999;">
           <button type="submit" class="btn btn-primary" name="button" id="predict" >GIVE ME A PREDICTION</button>
         </div>
       </form>

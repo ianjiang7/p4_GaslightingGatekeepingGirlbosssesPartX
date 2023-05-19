@@ -64,3 +64,12 @@ IanJ -- 2023-5-17-1:20 AM
 - fixed bugs
 - created /predict route that loads the prediction and updates page.
   - updated page will have information to be used by the javascript
+
+Whole Group -- 2023-5-18-10:30 PM
+--------------------------------------------------------------
+- Thursdays tour:
+ - To work on:
+   - tidy up/fix droplet. app on droplet isnt fully functional
+   - make the visualizations nicer
+ - What we learned from other teams:
+   - 

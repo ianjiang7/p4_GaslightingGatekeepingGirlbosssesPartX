@@ -119,7 +119,7 @@ def logout():
 def predict():
     TICKER = request.form['ticker']
     predictions = get_prediction(TICKER)
-    return render_template("home.html", prediction=predictions[2])
+    return render_template("home.html", prediction=predictions[2], currentPrice=predictions[0], predictPrice=predictions[1], selectedTicker=TICKER)
 
 
 if __name__ == "__main__":

@@ -23,18 +23,36 @@ darkModeButton.addEventListener('click', darkMode);
 var c = document.getElementById('canvas');
 var ctx = c.getContext('2d');
 
-var showPrediction = function(buy) {
+var showPrediction = function(buy, currentPrice, predictedPrice, ticker) {
+    ctx.font = '20px Arial';
     if (buy == 'yes') {
+        ctx.fillStyle = 'black';
+        // ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillText("The Wallstreet Bros' Girlbosses say BUY NOW!", c.width/2, c.height/4)
+        ctx.fillText("The Girlboss Gods predict:", c.width/2, c.height/2)
+        ctx.fillText(ticker + "   " + predictedPrice, c.width/2, c.height*3.0/4.0)
         ctx.fillStyle = 'green';
-        ctx.fillRect(0, 0, c.width, c.height);
+        var increase = Number(predictedPrice)-Number(currentPrice)
+        var percentIncrease = increase/Number(currentPrice) * 100
+        ctx.fillText("+"+ increase + "    +" + percentIncrease + "%", c.width/2, c.height*7.0/8.0)
     } else if (buy == 'no'){
+        ctx.fillStyle = 'black';
+        // ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillText("The Wallstreet Bros' Girlbosses say SELL NOW!", c.width/2, c.height/4)
+        ctx.fillText("The Girlboss Gods predict:", c.width/2, c.height/2)
+        ctx.fillText(ticker + "   "+ predictedPrice, c.width/2, c.height*3.0/4.0)
         ctx.fillStyle = 'red';
-        ctx.fillRect(0, 0, c.width, c.height);
+        var decrease = Number(predictedPrice)-Number(currentPrice)
+        var percentDecrease = increase/Number(currentPrice) * 100
+        ctx.fillText("-"+ decrease + "    -" + percentDecrease + "%", c.width/2, c.height*7.0/8.0)
     }
 }
 
 var loading = document.getElementById('loading');
 var prediction = document.getElementById('prediction');
+var TICKER = document.getElementById('selectedTicker');
+var CURRENT_PRICE = document.getElementById('currentPrice');
+var PREDICT_PRICE = document.getElementById('predictPrice');
 var button = document.getElementById('predict');
 
 var loadingPrediction = function() {
@@ -48,8 +66,21 @@ var loadedPrediction = function() {
     button.disabled = false;
 }
 
+button.addEventListener("click", (event) => {
+    event.preventDefault();
+    loadingPrediction();
+    var tickerform = document.getElementById('tickerform');
+    document.tickerform.submit();
+})
+
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        loadedPrediction();
+    }
+})
+
 var predict = function() {
-    showPrediction(prediction.value);
+    showPrediction(prediction.value, CURRENT_PRICE.value , PREDICT_PRICE.value, TICKER.value);
 }
 
 //button.addEventListener('click', loadingPrediction());
@@ -71,5 +102,6 @@ var resizeCanvas = function() {
 }
 
 window.addEventListener('resize', () => {
-    resizeCanvas()}
-    );
+    resizeCanvas()
+    showPrediction(prediction.value, CURRENT_PRICE.value, PREDICT_PRICE.value, TICKER.value)
+});

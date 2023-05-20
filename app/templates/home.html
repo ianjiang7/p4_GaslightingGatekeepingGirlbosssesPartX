@@ -53,8 +53,11 @@
       </div>
 
       <input type="hidden" id="prediction" name="prediction" value="{{prediction}}">
+      <input type="hidden" id="predictPrice" name="predictPrice" value="{{predictPrice}}">
+      <input type="hidden" id="currentPrice" name="currentPrice" value="{{currentPrice}}">
+      <input type="hidden" id="selectedTicker" name="selectedTicker" value="{{selectedTicker}}">
 
-      <form action="/predict" method="post" >
+      <form action="/predict" method="post" id="tickerform" name="tickerform">
         <div class="mx-auto" style="width: 500px;z-index:2;position:sticky;">
           Give me a prediction for:
 

@@ -7,6 +7,8 @@ from keras.models import Sequential
 from keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 from keras.callbacks import EarlyStopping
+import base64
+from io import BytesIO
 plt.style.use('fivethirtyeight')
 
 import yfinance as yf
@@ -14,15 +16,21 @@ import yfinance as yf
 def get_prediction(ticker):
   df = yf.download(tickers=ticker, period="20d", interval="15m", auto_adjust=True)
 
-  '''
+  
   plt.figure(figsize=(16,8))
   plt.title('Close Price History')
   plt.plot(df['Close'])
   plt.xlabel('Date', fontsize=18)
   plt.ylabel('Closing Price USD($)', fontsize=18)
-  plt.show()
-  '''
+  
+  tmpfile2 = BytesIO()
+  plt.savefig(tmpfile2, format='png')
+  encoded2 = base64.b64encode(tmpfile2.getvalue()).decode('utf-8')
 
+  closinghtml= 'Some html head' + '<img src=\'data:image/png;base64,{}\'>'.format(encoded2) + 'Some more html'
+
+  with open('test2.html','w') as f:
+    f.write(closinghtml)
 
   # Create a new dataframe with only the 'Close' column
   data = df.filter(['Close'])
@@ -80,15 +88,41 @@ def get_prediction(ticker):
   predictions = model.predict(x_test)
   predictions = scaler.inverse_transform(predictions)
 
+  # Plot the data
+  train = data[:training_data_len]
+  valid = data[training_data_len:]
+  valid['Predictions'] = predictions
+  # Visualize the data
+  plt.figure(figsize=(16,8))
+  plt.title('Model')
+  plt.xlabel('Data', fontsize=18)
+  plt.ylabel('Closing Price USD($)', fontsize=18)
+  plt.plot(train['Close'])
+  plt.plot(valid[['Close', 'Predictions']])
+  plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+
+  tmpfile = BytesIO()
+  plt.savefig(tmpfile, format='png')
+  encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
+
+  predictionhtml= 'Some html head' + '<img src=\'data:image/png;base64,{}\'>'.format(encoded) + 'Some more html'
+
+  with open('test.html','w') as f:
+    f.write(predictionhtml)
+
   if predictions[0,0] > data.iloc[0,0] :
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("yes")
       return [data.iloc[0,0], predictions[0,0], 'yes']
+      
   else:
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("no!")
       return [data.iloc[0,0], predictions[0,0], 'no']
+      
+
+
 
 get_prediction("NVDA")

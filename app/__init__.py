@@ -68,20 +68,9 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def authenticate():
-    ##### ACCOUNT INFO CHECK
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
-
-        # c.execute("SELECT password FROM login WHERE user = (?)", username)
-
-        # try:
-        #     x = c.fetchall()[0][0]
-        #     if x != password:
-        #         return render_template('login.html', login="Invalid Password!")
-        #     session['username'] = username
-        # except:
-        #     return render_template('login.html', login="Submitted username is not registered!")
     if login(user,pw):
         if request.method == 'POST':
             session['username'] = request.form['username']
@@ -117,10 +106,12 @@ def logout():
 
 @app.route("/predict", methods=['POST'])
 def predict():
-    TICKER = request.form['ticker']
-    predictions = get_prediction(TICKER)
-    return render_template("home.html", prediction=predictions[2], currentPrice=predictions[0], predictPrice=predictions[1], selectedTicker=TICKER)
-
+    if 'username' in session:
+        TICKER = request.form['ticker']
+        predictions = get_prediction(TICKER)
+        return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, Username=session['username'])
+    else:
+        return redirect('/')
 
 if __name__ == "__main__":
     app.debug = True

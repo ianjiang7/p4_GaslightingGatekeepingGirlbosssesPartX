@@ -71,5 +71,15 @@ Whole Group -- 2023-5-18-10:30 PM
  - To work on:
    - tidy up/fix droplet. app on droplet isnt fully functional
    - make the visualizations nicer
- - What we learned from other teams:
-   - 
+ 
+IanJ -- 2023-5-20-10:20 PM
+--------------------------------------------------------------
+- text is displayed instead of color on canvas
+ - says:
+  - whether to buy now or sell now
+  - predicted price
+  - percent change
+  - price change
+- added alert telling user to pick a stock if "Pick a stock" is submitted
+- page now always shwos username on top right dropdown menu
+- added loading spinner

@@ -105,22 +105,22 @@ def get_prediction(ticker):
   plt.savefig(tmpfile, format='png')
   encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
 
-  predictionhtml= 'Some html head' + '<img src=\'data:image/png;base64,{}\'>'.format(encoded) + 'Some more html'
-
-  with open('test.html','w') as f:
-    f.write(predictionhtml)
+  #predictionhtml= 'Some html head' + '<img src=\'data:image/png;base64,{}\'>'.format(encoded) + 'Some more html'
+  predictionhtml= '<img class="mx-auto d-block" src=\'data:image/png;base64,{}\'>'.format(encoded)
+  # with open('test.html','w') as f:
+  #   f.write(predictionhtml)
 
   if predictions[0,0] > data.iloc[0,0] :
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("yes")
-      return [data.iloc[0,0], predictions[0,0], 'yes']
+      return [data.iloc[0,0], predictions[0,0], 'yes', predictionhtml]
       
   else:
       print (predictions[0,0])
       print (data.iloc[0,0])
       print ("no!")
-      return [data.iloc[0,0], predictions[0,0], 'no']
+      return [data.iloc[0,0], predictions[0,0], 'no', predictionhtml]
       
 
 

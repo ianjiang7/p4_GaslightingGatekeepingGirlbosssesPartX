@@ -54,6 +54,7 @@ var h2 = document.getElementById('h2');
 var h3 = document.getElementById('h3');
 var priceSpan = document.getElementById('price');
 var changeSpan = document.getElementById('change');
+
 var showPrediction = function(buy, currentPrice, predictedPrice, ticker) {
     h1.innerHTML = "The Wallstreet Bros' Girlbosses say "
     h2.innerHTML = "The Girlboss Gods predict:"
@@ -69,6 +70,12 @@ var showPrediction = function(buy, currentPrice, predictedPrice, ticker) {
         changeSpan.style.color = 'red';
         changeSpan.innerText = "-"+ change.toFixed(2) + "    -" + percentChange.toFixed(2) + "%"
     }
+}
+
+var graphhtml = document.getElementById('predictionhtml');
+var graph = document.getElementById('graph');
+var showGraph = function() {
+    graph.innerHTML = graphhtml.value;
 }
 
 var loading = document.getElementById('loading');
@@ -113,6 +120,7 @@ document.addEventListener("readystatechange", (event) => {
 var predict = function() {
     display.style.display = 'block';
     showPrediction(prediction.value, CURRENT_PRICE.value , PREDICT_PRICE.value, TICKER.value);
+    showGraph();
 }
 
 //button.addEventListener('click', loadingPrediction());

@@ -109,7 +109,7 @@ def predict():
     if 'username' in session:
         TICKER = request.form['ticker']
         predictions = get_prediction(TICKER)
-        return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, Username=session['username'])
+        return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, predictionhtml=predictions[3], Username=session['username'])
     else:
         return redirect('/')
 

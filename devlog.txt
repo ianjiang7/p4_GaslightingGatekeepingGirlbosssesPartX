@@ -30,7 +30,11 @@ AdenG -- 2023-5-4 12:55 PM
 --------------------------------------------------------------
 - created html files for each site page (home, login, register)
 
-IanJ -- 2023-5-9-9:30 PM
+GitaeP -- 2023-5-8 12:30 PM
+--------------------------------------------------------------
+- created database for username and password
+
+IanJ, GitaeP -- 2023-5-9-9:30 PM
 --------------------------------------------------------------
 - created database methods used for login and signup
 - got login and signup to work

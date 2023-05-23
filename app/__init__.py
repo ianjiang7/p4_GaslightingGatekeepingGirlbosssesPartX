@@ -6,6 +6,13 @@ import random
 import os
 from LSTM import get_prediction
 
+absolute_path = os.path.dirname(os.path.abspath(__file__))
+file_path = absolute_path + "/stock_name.txt"
+tickerlist = open(file_path, "r").read().split('\n')
+for i in range(len(tickerlist)):
+    tickerlist[i] = tickerlist[i].split(',')[0]
+
+
 DB_FILE = "tables.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
@@ -62,7 +69,7 @@ def login(username, password):
 def index():
     # if there is a session in place, divert the user to the main page
     if 'username' in session:
-        return render_template("home.html", prediction="", Username=session['username'])
+        return render_template("home.html", prediction="", Username=session['username'], list=tickerlist)
     else:
         return render_template('register.html')
 
@@ -109,7 +116,7 @@ def predict():
     if 'username' in session:
         TICKER = request.form['ticker']
         predictions = get_prediction(TICKER)
-        return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, predictionhtml=predictions[3], Username=session['username'])
+        return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, predictionhtml=predictions[3], Username=session['username'],list=tickerlist)
     else:
         return redirect('/')
 

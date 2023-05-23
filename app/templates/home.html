@@ -61,14 +61,13 @@
       <form action="/predict" method="post" id="tickerform" name="tickerform">
         <div class="mx-auto" style="width: 500px;z-index:2;position:sticky;">
           Give me a prediction for:
-
           <select class="form-select" aria-label="Default select example" id="ticker" name="ticker" style="width: 150px; display: inline; position:sticky;z-index:2;">
             <option selected>Pick a stock</option>
-            <option value="NVDA">NVDA</option>
-            <option value="AAPL">AAPL</option>
-            <option value="MSFT">MSFT</option>
-            <option value="TSLA">TSLA</option>
+            {% for tick in list%}
+            <option value="{{tick}}">{{tick}}</option>
+            {% endfor %}
           </select>
+          
         </div>
 
         <div class="mx-auto my-2" style="width: 200px;position:sticky;z-index: 999;">

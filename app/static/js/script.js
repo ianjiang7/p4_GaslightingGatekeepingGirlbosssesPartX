@@ -20,8 +20,6 @@ var darkMode = function() {
 lightModeButton.addEventListener('click', lightMode);
 darkModeButton.addEventListener('click', darkMode);
 
-var c = document.getElementById('canvas');
-var ctx = c.getContext('2d');
 
 // var showPrediction = function(buy, currentPrice, predictedPrice, ticker) {
 //     ctx.font = '20px Arial';
@@ -68,7 +66,7 @@ var showPrediction = function(buy, currentPrice, predictedPrice, ticker) {
     } else if (buy == 'no'){
         h1.innerHTML += "SELL NOW!"
         changeSpan.style.color = 'red';
-        changeSpan.innerText = "-"+ change.toFixed(2) + "    -" + percentChange.toFixed(2) + "%"
+        changeSpan.innerText = + change.toFixed(2) + "    " + percentChange.toFixed(2) + "%"
     }
 }
 
@@ -136,12 +134,7 @@ var hideLogin = function() {
 
 loginButton.addEventListener('change', hideLogin());
 
-var resizeCanvas = function() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-}
 
-window.addEventListener('resize', () => {
-    resizeCanvas()
-    showPrediction(prediction.value, CURRENT_PRICE.value, PREDICT_PRICE.value, TICKER.value)
-});
+// window.addEventListener('resize', () => {
+//     showPrediction(prediction.value, CURRENT_PRICE.value, PREDICT_PRICE.value, TICKER.value)
+// });

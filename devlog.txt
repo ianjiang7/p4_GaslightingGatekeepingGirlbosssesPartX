@@ -30,11 +30,7 @@ AdenG -- 2023-5-4 12:55 PM
 --------------------------------------------------------------
 - created html files for each site page (home, login, register)
 
-GitaeP -- 2023-5-8 12:30 PM
---------------------------------------------------------------
-- created database for username and password
-
-IanJ, GitaeP -- 2023-5-9-9:30 PM
+IanJ -- 2023-5-9-9:30 PM
 --------------------------------------------------------------
 - created database methods used for login and signup
 - got login and signup to work
@@ -75,21 +71,5 @@ Whole Group -- 2023-5-18-10:30 PM
  - To work on:
    - tidy up/fix droplet. app on droplet isnt fully functional
    - make the visualizations nicer
- 
-IanJ -- 2023-5-20-10:20 PM
---------------------------------------------------------------
-- text is displayed instead of color on canvas
- - says:
-  - whether to buy now or sell now
-  - predicted price
-  - percent change
-  - price change
-- added alert telling user to pick a stock if "Pick a stock" is submitted
-- page now always shwos username on top right dropdown menu
-- added loading spinner
-
-KevinX -- 2023-5-21:12:00 AM
---------------------------------------------------------------
-- Used Matplotlib to create graphs for closing price and prediction prices
-- Created line graphs for validation and training predictions
-- Encoded said graphs in base64 and saved into local html files
+ - What we learned from other teams:
+   - 

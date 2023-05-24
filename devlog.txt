@@ -93,3 +93,8 @@ KevinX -- 2023-5-21:12:00 AM
 - Used Matplotlib to create graphs for closing price and prediction prices
 - Created line graphs for validation and training predictions
 - Encoded said graphs in base64 and saved into local html files
+
+IanJ -- 2023-5-24-9:00 AM
+--------------------------------------------------------------
+- updated requirements.txt
+- finalized list of stocks in dropdown menu

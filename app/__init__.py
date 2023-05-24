@@ -17,7 +17,7 @@ DB_FILE = "tables.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
 
-command = "create table IF NOT EXISTS login(user TEXT, password TEXT, stock_id INTEGER);"
+command = "create table IF NOT EXISTS login(user TEXT, password TEXT);"
 c.execute(command)
 db.commit()
 
@@ -75,20 +75,9 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def authenticate():
-    ##### ACCOUNT INFO CHECK
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
-
-        # c.execute("SELECT password FROM login WHERE user = (?)", username)
-
-        # try:
-        #     x = c.fetchall()[0][0]
-        #     if x != password:
-        #         return render_template('login.html', login="Invalid Password!")
-        #     session['username'] = username
-        # except:
-        #     return render_template('login.html', login="Submitted username is not registered!")
     if login(user,pw):
         if request.method == 'POST':
             session['username'] = request.form['username']
@@ -124,19 +113,12 @@ def logout():
 
 @app.route("/predict", methods=['POST'])
 def predict():
-<<<<<<< HEAD
     if 'username' in session:
         TICKER = request.form['ticker']
         predictions = get_prediction(TICKER)
         return render_template("home.html", prediction=predictions[2], currentPrice=round(predictions[0],2), predictPrice=round(predictions[1],2), selectedTicker=TICKER, predictionhtml=predictions[3], Username=session['username'],list=tickerlist)
     else:
         return redirect('/')
-=======
-    TICKER = request.form['ticker']
-    predictions = get_prediction(TICKER)
-    return render_template("home.html", prediction=predictions[2])
-
->>>>>>> 8fbf677669c7d4f23976e9ed3b7870a7b2fc4f8b
 
 if __name__ == "__main__":
     app.debug = True
